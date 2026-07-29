@@ -141,6 +141,63 @@
   .ldot.now{background:#ffd76a;}
   #landNextHint{font-size:11px;opacity:.6;margin-top:4px;color:#fff;}
 
+  /* 🎮 착륙 RPG */
+  #landItems{position:absolute;inset:0;z-index:7;pointer-events:none;}
+  .landItem{position:absolute;bottom:20%;font-size:clamp(34px,8vw,58px);
+    transform:translateX(-50%);filter:drop-shadow(0 6px 8px rgba(0,0,0,.6));transition:opacity .3s;}
+  .landItem .ring{position:absolute;left:50%;top:50%;width:150%;height:150%;
+    transform:translate(-50%,-50%);border-radius:50%;border:3px dashed rgba(255,224,138,.75);
+    animation:aRing 1.6s linear infinite;}
+  @keyframes aRing{0%{transform:translate(-50%,-50%) scale(.85) rotate(0);opacity:.9}
+    100%{transform:translate(-50%,-50%) scale(1.1) rotate(360deg);opacity:.4}}
+  .landItem.done{opacity:.35;}
+  .landItem.done .ring{display:none;}
+  #landHud{position:fixed;top:16px;right:14px;z-index:30;
+    background:rgba(10,8,26,.75);border:2px solid rgba(255,224,138,.4);border-radius:999px;
+    padding:7px 16px;font-size:clamp(13px,3.2vw,19px);color:#ffe08a;pointer-events:none;}
+  #landControls{position:fixed;bottom:112px;left:0;right:0;z-index:31;
+    display:flex;justify-content:space-between;align-items:center;padding:0 16px;pointer-events:none;}
+  .padBtn{pointer-events:auto;border:3px solid rgba(255,255,255,.35);
+    background:rgba(30,24,60,.6);color:#fff;font-family:inherit;cursor:pointer;
+    width:clamp(64px,15vw,92px);height:clamp(64px,15vw,92px);border-radius:50%;
+    font-size:clamp(24px,6vw,38px);display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(4px);user-select:none;}
+  .padBtn:active{transform:scale(.9);background:rgba(80,60,160,.75);}
+  #btnJump{background:radial-gradient(circle at 35% 30%,#8ef0c8,#3aa878);border-color:rgba(140,255,210,.6);}
+  #landCard{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);
+    z-index:35;width:min(500px,92vw);background:rgba(16,12,42,.96);
+    border:3px solid rgba(255,224,138,.6);border-radius:26px;padding:20px;
+    text-align:center;display:none;opacity:0;transition:.3s;}
+  #landCard.on{display:block;opacity:1;transform:translate(-50%,-50%) scale(1);}
+  #landCardIcon{font-size:clamp(48px,12vw,80px);}
+  #landCardTitle{font-size:clamp(17px,4.2vw,26px);color:#ffe08a;margin-top:4px;}
+  #landCardBody{font-size:clamp(14px,3.6vw,21px);line-height:1.55;margin-top:12px;min-height:3.4em;color:#fff8ec;}
+  #landCardBtn{margin-top:14px;border:none;border-radius:999px;font-family:inherit;cursor:pointer;
+    font-size:clamp(15px,3.8vw,22px);padding:12px 30px;color:#3a2c00;
+    background:linear-gradient(180deg,#ffd76a,#f0b429);box-shadow:0 4px 0 #b8860b;}
+  #landCardBtn:active{transform:translateY(3px);box-shadow:0 1px 0 #b8860b;}
+  .thinkPulse{animation:aThink 1.4s ease-in-out infinite;}
+  @keyframes aThink{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+  /* 📬 우주 우체부 */
+  #questBtn{top:calc(18px + clamp(84px,22vw,116px));right:12px;}
+  #questPanel{position:fixed;inset:0;z-index:45;background:rgba(6,4,18,.93);
+    display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+  #questPanel.on{display:flex;}
+  #questTitle{font-size:clamp(20px,5vw,34px);color:#ffe08a;text-align:center;}
+  #questSub{font-size:clamp(12px,3vw,18px);opacity:.8;margin-top:6px;text-align:center;}
+  #questList{margin-top:18px;width:min(460px,94vw);display:flex;flex-direction:column;gap:7px;
+    max-height:56vh;overflow-y:auto;}
+  .qrow{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);
+    border:2px solid rgba(255,255,255,.12);border-radius:16px;padding:9px 14px;
+    font-size:clamp(13px,3.2vw,19px);}
+  .qrow.done{border-color:rgba(126,240,200,.6);background:rgba(126,240,200,.12);}
+  .qrow .qi{font-size:1.3em;}
+  .qrow .qn{flex:1;text-align:left;}
+  #questClose{margin-top:18px;border:none;border-radius:999px;font-family:inherit;cursor:pointer;
+    font-size:clamp(15px,3.8vw,22px);padding:12px 34px;color:#3a2c00;
+    background:linear-gradient(180deg,#ffd76a,#f0b429);box-shadow:0 4px 0 #b8860b;}
+
   /* 🧑‍🚀 여기 오면 어떻게 될까? 패널 */
   #lifePanel{position:fixed;bottom:140px;left:50%;transform:translateX(-50%);z-index:12;
     background:rgba(16,12,42,.92);border:2px solid rgba(126,240,200,.5);border-radius:22px;
@@ -203,6 +260,53 @@
     font-size:clamp(13px,3.2vw,20px);color:#7ef0c8;white-space:nowrap;
     text-shadow:0 0 10px rgba(0,0,0,.8);animation:pulse 1.6s infinite;}
 
+  /* 🃏 행성 기억력 카드게임 */
+  #cardGame{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at 50% 15%,#2a2358,#0d0b24 55%,#05040f);
+    display:none;flex-direction:column;padding:10px;}
+  #cardGame.on{display:flex;}
+  #cgTop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;}
+  #cgBack{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.12);
+    color:#fff;font-size:18px;cursor:pointer;}
+  #cgTitle{font-size:clamp(15px,3.8vw,24px);color:#ffe08a;}
+  #cgStat{font-size:clamp(12px,3vw,18px);color:#7ef0c8;min-width:74px;text-align:right;}
+  #cgSetup{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+  #cgSetup .cgLbl{font-size:clamp(15px,3.8vw,23px);color:#fff;}
+  .cgLevels{display:flex;gap:10px;}
+  .cgLevels button{background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.2);
+    border-radius:16px;padding:12px 14px;color:#fff;font-family:inherit;
+    font-size:clamp(13px,3.2vw,19px);cursor:pointer;}
+  .cgLevels button small{display:block;font-size:.72em;opacity:.7;margin-top:3px;}
+  .cgLevels button.sel{background:#ffd644;color:#241f4e;border-color:#ffd644;transform:scale(1.06);}
+  #cgStart{border:none;border-radius:999px;font-family:inherit;cursor:pointer;
+    font-size:clamp(17px,4.4vw,26px);padding:14px 40px;color:#fff;
+    background:linear-gradient(180deg,#ff6b9d,#e8548a);box-shadow:0 5px 0 #b13a67;}
+  #cgStart:active{transform:translateY(3px);box-shadow:0 2px 0 #b13a67;}
+  #cgBest{font-size:clamp(12px,3vw,17px);opacity:.75;}
+  #cgBoard{flex:1;display:none;grid-gap:clamp(6px,1.6vw,12px);align-content:center;
+    padding:4px;min-height:0;}
+  #cgBoard.on{display:grid;}
+  .cgCard{perspective:800px;cursor:pointer;aspect-ratio:3/4;min-height:0;}
+  .cgInner{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d;}
+  .cgCard.flip .cgInner{transform:rotateY(180deg);}
+  .cgFace{position:absolute;inset:0;border-radius:clamp(8px,2vw,14px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+  .cgBack{background:linear-gradient(145deg,#6c5ce7,#3a2a9a);border:3px solid rgba(255,255,255,.3);
+    font-size:clamp(20px,5vw,36px);}
+  .cgFront{background:#100c28;transform:rotateY(180deg);border:3px solid #ffd644;}
+  .cgBall{border-radius:50%;width:62%;aspect-ratio:1;}
+  .cgName{font-size:clamp(9px,2.2vw,14px);color:#fff;text-align:center;line-height:1.1;}
+  .cgCard.done .cgFront{border-color:#7ef0c8;animation:cgPop .5s;}
+  .cgCard.done{pointer-events:none;}
+  @keyframes cgPop{0%{transform:scale(1)}45%{transform:scale(1.12) rotate(-4deg)}100%{transform:scale(1)}}
+  #cgWin{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;
+    justify-content:center;background:rgba(8,6,20,.92);z-index:5;gap:12px;}
+  #cgWin.on{display:flex;}
+  #cgWinIcon{font-size:clamp(70px,18vw,140px);animation:aHappy 1s infinite;}
+  #cgWinText{font-size:clamp(20px,5vw,34px);color:#ffe08a;text-align:center;}
+  #cgWinSub{font-size:clamp(13px,3.4vw,20px);opacity:.85;text-align:center;line-height:1.5;}
+  #gameBtn{bottom:66px;left:14px;}
+
   /* 로딩/오류 화면 */
   #loading{position:fixed;inset:0;z-index:50;background:#04030d;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
@@ -221,12 +325,40 @@
 </div>
 <canvas id="c"></canvas>
 <canvas id="speed"></canvas>
-<div class="ui" id="title">🚀 3D 우주 탐험대 <span style="font-size:.6em;opacity:.6">v19</span></div>
-<div style="position:fixed;left:8px;bottom:2px;z-index:30;font-size:10px;opacity:.45;color:#aab;pointer-events:none;font-family:monospace" id="dbg">v19 준비중</div>
+<div class="ui" id="title">🚀 3D 우주 탐험대 <span style="font-size:.6em;opacity:.6">v21</span></div>
+<div style="position:fixed;left:8px;bottom:2px;z-index:30;font-size:10px;opacity:.45;color:#aab;pointer-events:none;font-family:monospace" id="dbg">v21 준비중</div>
 <div class="ui" id="hint">화면을 문질러 조종하고,<br>가고 싶은 별을 콕 눌러요!</div>
 <button class="ui pill" id="mapBtn">🗺️ 태양계 지도</button>
 <button class="ui pill" id="qualBtn" style="top:calc(14px + clamp(42px,11vw,58px));right:12px;">✨ 선명하게</button>
+<button class="ui pill" id="questBtn">📬 배달 0/10</button>
 <button class="ui pill" id="timeBtn">⏱️ 시간 x1</button>
+<button class="ui pill" id="gameBtn">🃏 카드게임</button>
+<div id="cardGame">
+  <div id="cgTop">
+    <button id="cgBack">⬅</button>
+    <div id="cgTitle">🃏 행성 기억력 게임</div>
+    <div id="cgStat"></div>
+  </div>
+  <div id="cgSetup">
+    <div class="cgLbl">카드를 몇 장으로 할까요?</div>
+    <div class="cgLevels">
+      <button data-p="4" class="sel">쉬워요<small>8장</small></button>
+      <button data-p="6">보통이에요<small>12장</small></button>
+      <button data-p="8">어려워요<small>16장</small></button>
+    </div>
+    <button id="cgStart">시작! 🎉</button>
+    <div id="cgBest"></div>
+  </div>
+  <div id="cgBoard"></div>
+  <div id="cgWin">
+    <div id="cgWinIcon">🏆</div>
+    <div id="cgWinText"></div>
+    <div id="cgWinSub"></div>
+    <button id="cgAgain" style="border:none;border-radius:999px;font-family:inherit;cursor:pointer;
+      font-size:clamp(16px,4vw,24px);padding:13px 34px;color:#3a2c00;
+      background:linear-gradient(180deg,#ffd76a,#f0b429);box-shadow:0 4px 0 #b8860b;">한 번 더! 🔄</button>
+  </div>
+</div>
 <button class="ui" id="boostBtn">🔥<br>부스터!</button>
 <div class="ui" id="flying">🚀 슈우웅~ 날아가는 중!</div>
 
@@ -275,13 +407,32 @@
   <div id="landGround"></div>
   <button id="landBackBtn">⬅</button>
   <div id="landTitle"></div>
+  <div id="landItems"></div>
   <div id="landLander">🛰️</div>
   <div id="landCharWrap"><span id="landChar">🧑‍🚀</span></div>
+  <div id="landHud">🎯 0 / 3</div>
+  <div id="landControls">
+    <button class="padBtn" id="btnLeft">◀</button>
+    <button class="padBtn" id="btnJump">🦘</button>
+    <button class="padBtn" id="btnRight">▶</button>
+  </div>
+  <div id="landCard">
+    <div id="landCardIcon">🪨</div>
+    <div id="landCardTitle"></div>
+    <div id="landCardBody"></div>
+    <button id="landCardBtn">🙋 대답했어요!</button>
+  </div>
   <div id="landCaption">
     <div id="landCapText"></div>
     <div id="landDots"></div>
     <div id="landNextHint">화면을 톡 누르면 다음 이야기예요 →</div>
   </div>
+</div>
+<div id="questPanel">
+  <div id="questTitle">📬 우주 우체부 미션</div>
+  <div id="questSub">태양에서 가까운 순서대로 편지를 배달해요!</div>
+  <div id="questList"></div>
+  <button id="questClose">🚀 배달하러 가기!</button>
 </div>
 <div id="bhFade"></div>
 <div id="bhMsg">🕳️ 블랙홀 속으로 빨려 들어가는 중...</div>
@@ -337,9 +488,10 @@ const DATA=[
  {id:'neptune',name:'해왕성',nick:'제일 먼 파란 바람 행성',size:2.1,dist:66,speed:0.055,color:0x4a6ee0,type:'ice',
   order:'태양에서 8번째 (제일 멀어요)',sizeDesc:'지구 4개 정도!',temp:'🧊🧊 제일 추운 곳 중 하나',special:'비행기보다 빠른 바람이 불어요 💨',cmp:3.9,
   facts:['태양에서 제일 먼 우주 여행 마지막 정거장! 🔵','깊은 바다처럼 진한 파란색이에요.','비행기보다 빠른, 제일 센 바람이 불어요!']},
- {id:'blackhole',name:'블랙홀',nick:'🕳️ 태양계를 스쳐 지나가는 신비한 손님',size:2.6,dist:82,speed:0.02,color:0x6a3fb0,type:'blackhole',kind:'special',
+ {id:'blackhole',name:'블랙홀',nick:'🕳️ (상상) 우주를 배우러 초대한 특별 손님',size:2.6,dist:82,speed:0.02,color:0x6a3fb0,type:'blackhole',kind:'special',
   order:'행성이 아니라 특별 손님이에요!',sizeDesc:'크기를 잴 수 없는 미스터리',temp:'🌌 온도를 잴 수 없어요',special:'빛조차 못 빠져나가는 우주 진공청소기',cmp:6,
-  facts:['블랙홀은 무엇이든 다 빨아들이는 우주의 진공청소기예요! 심지어 빛도 못 빠져나가요. 🕳️',
+  facts:['먼저 알아둘 게 있어요! 우리 태양계에는 블랙홀이 없어요. 우주를 배우려고 상상으로 초대한 손님이랍니다 🕳️',
+   '블랙홀은 무엇이든 다 빨아들여요! 심지어 빛도 못 빠져나가요.',
    '블랙홀 자체는 눈에 안 보여요. 대신 주변에 소용돌이치는 뜨거운 가스 원반이 빛나서 있는 곳을 알 수 있어요.',
    '아주아주 가까이 다가가면 국수 가락처럼 몸이 길게 쭉~ 늘어나요! 과학자들은 이걸 "스파게티화"라고 불러요 🍝',
    '걱정 마세요, 우리 우주선은 항상 안전한 먼 거리에서만 구경해요! 절대 가까이 가지 않아요.',
@@ -492,6 +644,31 @@ function texFor(d){
     ctx.fillStyle='rgba(255,255,255,.92)'; // 극관
     ctx.fillRect(0,0,w,12);ctx.fillRect(0,h-12,w,12);
   });
+  if(d.type==='europa')return tex512((ctx,w,h)=>{
+    ctx.fillStyle='#e8eef2';ctx.fillRect(0,0,w,h);
+    for(let i=0;i<40;i++){ // 유명한 갈색 균열
+      ctx.strokeStyle=Math.random()<0.5?'rgba(160,90,50,.75)':'rgba(120,70,40,.55)';
+      ctx.lineWidth=Math.random()*3+1;
+      ctx.beginPath();
+      let x=Math.random()*w,y=Math.random()*h;ctx.moveTo(x,y);
+      for(let k=0;k<4;k++){x+=(Math.random()-0.5)*140;y+=(Math.random()-0.5)*60;ctx.lineTo(x,y);}
+      ctx.stroke();
+    }
+  });
+  if(d.type==='enceladus')return tex512((ctx,w,h)=>{
+    ctx.fillStyle='#f4f8fb';ctx.fillRect(0,0,w,h);
+    for(let i=0;i<30;i++)blob(ctx,Math.random()*w,Math.random()*h,Math.random()*40+15,Math.random()*7+3,'#d8e4ee',0.7);
+    for(let i=0;i<5;i++){ // 남극 호랑이 줄무늬(물기둥이 나오는 곳)
+      ctx.strokeStyle='rgba(120,160,190,.8)';ctx.lineWidth=4;
+      ctx.beginPath();ctx.moveTo(60+i*30,h-30);ctx.lineTo(120+i*30,h-6);ctx.stroke();
+    }
+  });
+  if(d.type==='titan')return tex512((ctx,w,h)=>{
+    ctx.fillStyle='#e8a83c';ctx.fillRect(0,0,w,h);
+    for(let i=0;i<45;i++)blob(ctx,Math.random()*w,Math.random()*h,Math.random()*60+20,Math.random()*10+4,
+      Math.random()<0.5?'#f4c76a':'#c07a20',0.35);
+    for(let i=0;i<7;i++)blob(ctx,Math.random()*w,h*0.2+Math.random()*h*0.2,Math.random()*22+10,Math.random()*8+4,'#4a3a2a',0.6); // 메탄 호수
+  });
   // 얼음 행성 (천왕성/해왕성)
   return tex512((ctx,w,h)=>{
     const g=ctx.createLinearGradient(0,0,0,h);
@@ -533,6 +710,7 @@ function addMoon(parentMesh,r,orbitR,speed,color){
   if(parentMesh.userData.id==='earth')window.earthMoonMesh=m;
   parentMesh.userData.moons=parentMesh.userData.moons||[];
   parentMesh.userData.moons.push({pivot,speed});
+  return m;
 }
 DATA.forEach(d=>{
   const geo=new THREE.SphereGeometry(d.size,24,16);
@@ -583,7 +761,8 @@ DATA.forEach(d=>{
       ring.rotation.x=Math.PI/2.4;
       mesh.add(ring);
     });
-    addMoon(mesh,0.32,7,0.5,0xd8b070); // 타이탄
+    window.titanMesh=addMoon(mesh,0.32,7,0.5,0xd8b070);      // 타이탄
+    window.enceladusMesh=addMoon(mesh,0.20,5.2,0.75,0xf0f6fa); // 엔셀라두스
   }
   if(d.id==='uranus'){
     mesh.rotation.z=Math.PI/2.1;
@@ -594,7 +773,7 @@ DATA.forEach(d=>{
   }
   if(d.id==='jupiter'){  // 갈릴레이 4형제
     addMoon(mesh,0.26,5.4,1.1,0xe8d060); // 이오
-    addMoon(mesh,0.22,6.2,0.85,0xe8e8f0); // 유로파
+    window.europaMesh=addMoon(mesh,0.24,6.2,0.85,0xe8e8f0); // 유로파
     addMoon(mesh,0.34,7.1,0.62,0xb0a898); // 가니메데
     addMoon(mesh,0.30,8.0,0.45,0x807868); // 칼리스토
   }
@@ -681,8 +860,38 @@ const MOON_DATA={id:'moon',name:'달',nick:'지구의 하나뿐인 단짝 위성
   '밤마다 달 모양이 변해 보이지만 사실 달은 늘 그대로예요. 햇빛을 받는 쪽만 다르게 보이는 거랍니다!']};
 if(window.earthMoonMesh){
   window.earthMoonMesh.userData=MOON_DATA;
-  bodies.splice(4,0,{data:MOON_DATA,mesh:window.earthMoonMesh,pivot:new THREE.Object3D(),angleSpeed:0});
+  const ei=bodies.findIndex(b=>b.data.id==='earth');
+  bodies.splice(ei+1,0,{data:MOON_DATA,mesh:window.earthMoonMesh,pivot:new THREE.Object3D(),angleSpeed:0});
 }
+
+// ---------- 🌊 생명체를 찾는 후보지 위성들 (실제 과학 탐사 대상) ----------
+const EUROPA_DATA={id:'europa',name:'유로파',nick:'💧 얼음 아래 바다가 있는 목성의 달',size:0.24,dist:0,speed:0,color:0xe8e8f0,kind:'moon',type:'europa',
+ order:'목성의 달 (갈릴레이 4형제 중 하나)',sizeDesc:'우리 달보다 조금 작아요',temp:'🧊 표면은 꽁꽁 얼어 있어요',special:'두꺼운 얼음 아래 바다가 있을지도!',cmp:0.245,
+ facts:['유로파는 목성 주위를 도는 얼음 달이에요. 표면이 온통 반질반질한 얼음이에요! ❄️',
+  '갈색 줄무늬는 얼음이 쩍쩍 갈라진 금이에요. 360도로 돌려서 찾아봐요!',
+  '놀랍게도 그 두꺼운 얼음 아래에 진짜 바다가 숨어 있을 것으로 보여요. 지구 바다보다 물이 더 많을지도 몰라요! 🌊',
+  '물이 있는 곳엔 생명체가 살 수도 있어요. 그래서 과학자들이 유로파를 아주 궁금해한답니다!']};
+const ENCELADUS_DATA={id:'enceladus',name:'엔셀라두스',nick:'⛲ 물기둥을 뿜는 토성의 작은 달',size:0.20,dist:0,speed:0,color:0xf0f6fa,kind:'moon',type:'enceladus',
+ order:'토성의 달',sizeDesc:'아주 작은 얼음 달',temp:'🧊🧊 태양계에서 가장 하얗고 추운 곳',special:'얼음 틈에서 물기둥이 솟구쳐요!',cmp:0.04,
+ facts:['엔셀라두스는 토성 주위를 도는 작고 새하얀 얼음 달이에요.',
+  '남쪽 얼음 틈에서 물기둥이 우주로 쭉쭉 뿜어져 나와요! 마치 분수 같아요 ⛲',
+  '물기둥이 나온다는 건 얼음 아래에 따뜻한 바다가 있다는 뜻이에요.',
+  '중력이 아주아주 약해서, 여기서 뛰면 하늘 높이 붕 떠올라요! 🎈']};
+const TITAN_DATA={id:'titan',name:'타이탄',nick:'🟠 강과 호수가 있는 토성의 큰 달',size:0.32,dist:0,speed:0,color:0xd8b070,kind:'moon',type:'titan',
+ order:'토성의 달 (제일 커요)',sizeDesc:'수성보다도 커요!',temp:'🧊 아주 추워요 (영하 180도쯤)',special:'지구 말고 강과 호수가 있는 유일한 곳',cmp:0.4,
+ facts:['타이탄은 토성의 달 중에 제일 커요. 수성보다도 크답니다!',
+  '두꺼운 주황색 안개에 싸여 있어서 하늘이 오렌지빛이에요 🟠',
+  '지구 말고 강과 호수가 있는 유일한 곳이에요! 다만 물이 아니라 아주 차가운 메탄이 흐른답니다.',
+  '땅과 강이 있는 신기한 곳이라, 여기도 생명체를 찾아보는 후보지예요!']};
+function registerMoon(parentId,data,mesh){
+  if(!mesh)return;
+  mesh.userData=data;
+  const i=bodies.findIndex(b=>b.data.id===parentId);
+  if(i>=0)bodies.splice(i+1,0,{data,mesh,pivot:new THREE.Object3D(),angleSpeed:0});
+}
+registerMoon('jupiter',EUROPA_DATA,window.europaMesh);
+registerMoon('saturn',TITAN_DATA,window.titanMesh);
+registerMoon('saturn',ENCELADUS_DATA,window.enceladusMesh);
 
 // ---------- 🔍 행성별 찾아보기 미션 ----------
 const MISSIONS={
@@ -696,7 +905,10 @@ const MISSIONS={
  saturn:'🔍 미션: 고리가 몇 겹인지 세어 보라!',
  uranus:'🔍 미션: 세로로 선 고리를 찾아라!',
  neptune:'🔍 미션: 진한 파란 점(폭풍)을 찾아라!',
- blackhole:'🔍 미션: 소용돌이치는 가스 원반을 찾아라!'};
+ blackhole:'🔍 미션: 소용돌이치는 가스 원반을 찾아라!',
+ europa:'🔍 미션: 얼음에 갈라진 갈색 금을 찾아라!',
+ enceladus:'🔍 미션: 물기둥이 나오는 남쪽 줄무늬를 찾아라!',
+ titan:'🔍 미션: 주황 안개 속 검은 호수를 찾아라!'};
 
 // ---------- 💍 토성 고리 확대 (얼음·돌 조각) ----------
 let ringView=false,ringChunksG=null,ringMarker=null;
@@ -774,6 +986,12 @@ const LIFE={
   txt:'꽁꽁꽁! 얼음 행성이라 눈 깜짝할 사이에 얼음이 되어 버려요!'},
  neptune:{e:'🧑‍🚀',anim:'a-blow',fx:[['💨','left:6%;top:40%','fx-wind'],['💨','left:2%;top:62%','fx-wind']],
     txt:'비행기보다 빠른 바람이 불어요! 슈우웅~ 날아가지 않게 꽉 잡아야 해요!'},
+ europa:{e:'🧑‍🚀',anim:'a-freeze',fx:[['❄️','left:16%;top:30%',''],['🌊','right:14%;top:62%','']],
+  txt:'발밑이 전부 얼음이에요! 아주 미끄럽고 추워요. 그런데 이 얼음 아래엔 바다가 숨어 있을지도 몰라요 🌊'},
+ enceladus:{e:'🧑‍🚀',anim:'a-hop',fx:[['⛲','left:18%;top:26%',''],['🎈','right:16%;top:34%','a-floaty']],
+  txt:'살짝만 굴러도 하늘 높이 붕~ 떠올라요! 중력이 지구의 100분의 1도 안 되거든요.'},
+ titan:{e:'🧑‍🚀',anim:'a-floaty',fx:[['🌫️','left:12%;top:28%',''],['🛶','right:14%;top:64%','']],
+  txt:'주황색 안개가 자욱해요. 공기가 두꺼워서 팔을 저으면 새처럼 날 수도 있대요! 🪶'},
  blackhole:{e:'🧑‍🚀',anim:'a-stretch',fx:[['🍝','left:50%;top:20%;transform:translateX(-50%)','fx-swirl']],
   txt:'앗! 몸이 국수 가락처럼 쭉~ 늘어나요! 이게 바로 "스파게티화"예요 🍝 (진짜 우주선은 항상 안전 거리를 지켜요!)'}};
 let lifeOn=false;
@@ -792,6 +1010,97 @@ function showLife(on){
 }
 document.getElementById('lifeBtn').onclick=()=>showLife(!lifeOn);
 document.getElementById('lifePanel').onclick=()=>showLife(false);
+
+// ---------- 🎮 표면 탐사 데이터 (과학적 사실 기반) ----------
+// 단단한 땅이 있는 천체만 걸어다닐 수 있어요 (가스 행성엔 밟을 땅이 없어요!)
+const GRAV={mercury:0.38,venus:0.90,earth:1,moon:0.165,mars:0.38,
+ europa:0.134,enceladus:0.08,titan:0.138};
+const SOLID_IDS=['mercury','venus','earth','moon','mars','europa','enceladus','titan'];
+// 🔬 생명 탐지기 — 실제로 과학자들이 생명체를 찾고 있는 곳에서만 반응해요
+const LIFE_CLUE={
+ earth:{x:2200,icon:'🔬',t:'생명 탐지기',q:'지구에 생명체가 있을까요?',
+  a:'있어요! 그것도 아주 많이요 💚 우리가 아는 우주에서 생명이 확인된 곳은 아직 지구뿐이에요.'},
+ mars:{x:2200,icon:'🔬',t:'생명 탐지기',q:'옛날 화성에 생명체가 살았을까요?',
+  a:'아직 아무도 몰라요! 옛날엔 강이 흘렀던 흔적이 있어서, 과학자들이 지금도 로봇으로 찾고 있어요. 네가 크면 제일 먼저 발견할지도 몰라! 🚀'},
+ europa:{x:2200,icon:'🔬',t:'생명 탐지기',q:'얼음 아래 바다에는 무엇이 있을까요?',
+  a:'아직 몰라요! 물이 있는 곳엔 생명이 살 수도 있어서, 과학자들이 탐사선을 보내 확인하려고 준비 중이에요 🌊'},
+ enceladus:{x:2200,icon:'🔬',t:'생명 탐지기',q:'물기둥 속에서 무엇을 찾을 수 있을까요?',
+  a:'생명의 재료가 될 물질들이 발견됐어요! 생명체가 있는지는 아직 아무도 몰라요. 그래서 더 신나는 거예요 ⛲'},
+ titan:{x:2200,icon:'🔬',t:'생명 탐지기',q:'물이 아닌 메탄 강에도 생명이 살 수 있을까요?',
+  a:'아무도 몰라요! 지구와 아주 다른 생명이 있을지 궁금해서, 과학자들이 하늘을 나는 탐사 로봇을 보낼 계획이에요 🚁'}};
+const SURFACE={
+ mercury:[
+  {x:560,icon:'🪨',t:'크레이터 돌 줍기',q:'수성 얼굴이 울퉁불퉁한 이유가 뭘까요?',a:'우주 돌덩이가 쿵쿵 부딪힌 자국이에요! 공기가 없어서 그 자국이 지워지지 않고 그대로 남아요.'},
+  {x:1260,icon:'🌡️',t:'온도 재기',q:'낮과 밤 중 언제가 더 뜨거울까요?',a:'낮이에요! 낮엔 물이 순식간에 끓을 만큼 뜨겁고, 밤엔 냉동실보다 훨씬 추워요.'},
+  {x:1980,icon:'🚩',t:'깃발 꽂기',q:'수성은 태양에서 몇 번째 행성일까요?',a:'첫 번째예요! 태양과 제일 가까운 꼬마 행성이랍니다. 탐사 완료! 🎉'}],
+ venus:[
+  {x:560,icon:'☁️',t:'구름 살펴보기',q:'금성의 구름은 비를 내려줄까요?',a:'아니에요! 아주 두꺼운 구름이 열을 가둬서, 금성을 태양계에서 제일 뜨거운 곳으로 만들어요.'},
+  {x:1260,icon:'🌋',t:'화산 찾기',q:'금성 땅에는 무엇이 아주 많을까요?',a:'화산이에요! 금성은 화산이 아주 많은 뜨거운 행성이랍니다.'},
+  {x:1980,icon:'🚩',t:'깃발 꽂기',q:'금성은 지구와 크기가 비슷할까요, 많이 다를까요?',a:'아주 비슷해요! 그래서 지구의 쌍둥이라고 불러요. 탐사 완료! 🎉'}],
+ earth:[
+  {x:560,icon:'🌊',t:'바닷물 담기',q:'지구가 우주에서 파랗게 보이는 이유는?',a:'바다 때문이에요! 지구는 물이 아주 많은, 우리가 아는 유일한 물의 행성이에요.'},
+  {x:1260,icon:'🌳',t:'나무 관찰',q:'우리가 숨 쉬는 공기는 어디서 올까요?',a:'나무와 식물이 만들어줘요! 지구에만 이렇게 살아있는 친구들이 가득해요.'},
+  {x:1980,icon:'🚩',t:'깃발 꽂기',q:'지구를 지키려면 우리가 뭘 할 수 있을까요?',a:'쓰레기는 쓰레기통에, 물은 아껴 쓰기! 지구는 하나뿐이에요 💚 탐사 완료! 🎉'}],
+ moon:[
+  {x:560,icon:'👣',t:'발자국 남기기',q:'달에는 바람이 불까요?',a:'안 불어요! 공기가 없어서 아폴로 우주인의 발자국이 50년이 지나도 그대로 남아 있어요.'},
+  {x:1260,icon:'🪨',t:'월석 채집',q:'달의 움푹 파인 구덩이를 뭐라고 부를까요?',a:'크레이터예요! 우주 돌덩이가 부딪혀 생긴 자국이랍니다.'},
+  {x:1980,icon:'🚩',t:'깃발 꽂기',q:'달에서는 왜 이렇게 높이 뛸 수 있을까요?',a:'달이 지구보다 훨씬 작아서 끌어당기는 힘이 약하거든요! 몸이 6배 가벼워져요. 탐사 완료! 🎉'}],
+ europa:[
+  {x:560,icon:'❄️',t:'얼음 표면 살펴보기',q:'유로파 땅은 무엇으로 되어 있을까요?',a:'전부 얼음이에요! 태양계에서 가장 매끈한 얼음 벌판이랍니다.'},
+  {x:1260,icon:'🪟',t:'갈라진 금 조사',q:'얼음에 난 갈색 금은 왜 생겼을까요?',a:'아래쪽 바다가 움직이면서 얼음을 쩍쩍 갈라놓은 거예요!'},
+  {x:1900,icon:'🚩',t:'깃발 꽂기',q:'유로파는 누구 주위를 돌고 있을까요?',a:'목성이에요! 하늘을 보면 커다란 목성이 보여요. 탐사 완료! 🎉'}],
+ enceladus:[
+  {x:560,icon:'⛲',t:'물기둥 관찰',q:'얼음 틈에서 뿜어져 나오는 건 무엇일까요?',a:'물이에요! 아래 바다의 물이 우주로 솟구쳐 나오는 거예요.'},
+  {x:1260,icon:'🎈',t:'점프 실험',q:'여기서 뛰면 얼마나 높이 뜰까요?',a:'엄청 높이요! 아주 작은 달이라 끌어당기는 힘이 지구의 100분의 1도 안 돼요.'},
+  {x:1900,icon:'🚩',t:'깃발 꽂기',q:'엔셀라두스가 하얗게 반짝이는 이유는?',a:'표면이 깨끗한 새 얼음이라 햇빛을 잘 반사해요. 탐사 완료! 🎉'}],
+ titan:[
+  {x:560,icon:'🌫️',t:'주황 안개 통과',q:'타이탄 하늘은 무슨 색일까요?',a:'주황색이에요! 두꺼운 안개가 하늘을 오렌지빛으로 만들어요.'},
+  {x:1260,icon:'🛶',t:'호수 살펴보기',q:'이 호수에는 물이 들어 있을까요?',a:'물이 아니에요! 아주 차가운 메탄이 흐른답니다. 지구 말고 강과 호수가 있는 유일한 곳이에요.'},
+  {x:1900,icon:'🚩',t:'깃발 꽂기',q:'타이탄은 수성보다 클까요, 작을까요?',a:'더 커요! 달인데도 수성보다 크답니다. 탐사 완료! 🎉'}],
+ mars:[
+  {x:560,icon:'🧊',t:'극지방 얼음',q:'화성 꼭대기의 하얀 모자는 무엇일까요?',a:'꽁꽁 언 얼음이에요! 화성에도 물이 얼음 형태로 있답니다.'},
+  {x:1260,icon:'🤖',t:'탐사 로버 만나기',q:'지금 화성에는 누가 살고 있을까요?',a:'사람이 보낸 로봇 탐사차예요! 사진을 찍고 돌을 조사해서 지구로 보내줘요.'},
+  {x:1980,icon:'🚩',t:'깃발 꽂기',q:'화성이 빨간 이유는 무엇일까요?',a:'땅에 있는 철이 녹슬어서 빨개진 거예요! 못이 녹스는 것과 같아요. 탐사 완료! 🎉'}]};
+// 가스 행성·태양은 단단한 땅이 없어요 (관찰만)
+const HOVER_Q={
+ sun:{q:'태양에 발을 디딜 수 있을까요?',a:'없어요! 태양은 땅이 아니라 뜨거운 가스 덩어리예요. 우주선에서 멀리 떨어져 구경만 해요.'},
+ jupiter:{q:'목성에 착륙할 수 있을까요?',a:'못 해요! 목성은 대부분 가스라서 밟을 땅이 없어요. 구름 위를 둥둥 떠다닐 수밖에 없답니다.'},
+ saturn:{q:'토성에는 어떻게 서 있을까요?',a:'설 수 없어요! 토성도 가스 행성이라 땅이 없어요. 대신 아름다운 얼음 고리를 구경해요.'},
+ uranus:{q:'천왕성 땅은 어떤 느낌일까요?',a:'단단한 땅이 없어요. 얼음과 가스로 가득해서 둥둥 떠다니게 돼요.'},
+ neptune:{q:'해왕성에 내려가면 어떻게 될까요?',a:'땅이 없어서 계속 아래로 떠내려가요. 게다가 아주 센 바람까지 불어요!'},
+ blackhole:{q:'블랙홀에 착륙할 수 있을까요?',a:'절대 안 돼요! 블랙홀은 땅이 없고, 무엇이든 빨아들여요. 아주 멀리서 구경만 해요.'}};
+
+// ---------- 📬 우주 우체부 퀘스트 ----------
+let quest={};
+try{quest=JSON.parse(localStorage.getItem('space_quest')||'{}');}catch(e){}
+function questTargets(){return bodies.filter(b=>b.data.id!=='blackhole');}
+function updateQuestBtn(){
+  const t=questTargets(),done=t.filter(b=>quest[b.data.id]).length;
+  const el=document.getElementById('questBtn');
+  if(el)el.textContent=`📬 배달 ${done}/${t.length}`;
+}
+function deliverLetter(b){
+  if(quest[b.data.id])return;
+  quest[b.data.id]=1;
+  try{localStorage.setItem('space_quest',JSON.stringify(quest));}catch(e){}
+  updateQuestBtn();
+  const t=questTargets(),done=t.filter(x=>quest[x.data.id]).length;
+  showToast(`📬 ${b.data.name} 편지 배달 완료! (${done}/${t.length})`);
+  if(done===t.length)setTimeout(()=>showToast('🏆 우주 우체부 마스터! 모든 편지를 배달했어요!'),2400);
+}
+function openQuest(){
+  const t=questTargets();
+  document.getElementById('questList').innerHTML=t.map((b,i)=>{
+    const d=quest[b.data.id];
+    return `<div class="qrow ${d?'done':''}"><span class="qi">${d?'✅':'📩'}</span>
+      <span class="qn">${i+1}. ${b.data.name}</span>
+      <span>${d?'배달완료':'대기중'}</span></div>`;
+  }).join('');
+  document.getElementById('questPanel').classList.add('on');
+}
+document.getElementById('questBtn').onclick=openQuest;
+document.getElementById('questClose').onclick=()=>document.getElementById('questPanel').classList.remove('on');
+updateQuestBtn();
 
 // ---------- 🚀 착륙해서 살펴보기 (몰입 화면) ----------
 const SKY_TINT={sun:'#7a2a0a',mercury:'#2a2420',venus:'#5a4014',earth:'#0a2a4a',moon:'#0a0a18',
@@ -838,6 +1147,10 @@ function enterLanded(){
     body.style.cssText='width:64px;height:64px;top:12%;right:18%;background:radial-gradient(circle at 35% 30%,#f0f0f0,#b8b8c0 60%,#888);';
   }else if(d.id==='moon'){
     body.style.cssText='width:120px;height:120px;top:10%;right:14%;background:radial-gradient(circle at 35% 30%,#bfeaff,#3f9de0 45%,#1d63b8 75%);box-shadow:0 0 50px 14px rgba(80,160,255,.35);';
+  }else if(d.id==='europa'){
+    body.style.cssText='width:150px;height:150px;top:8%;right:10%;background:radial-gradient(circle at 35% 30%,#ffe6c4,#e8b184 40%,#c07a4e 75%);box-shadow:0 0 44px 12px rgba(230,170,120,.3);';
+  }else if(d.id==='titan'||d.id==='enceladus'){
+    body.style.cssText='width:140px;height:140px;top:9%;right:11%;background:radial-gradient(circle at 35% 30%,#fff0c8,#ecd08a 55%,#bf9c55);box-shadow:0 0 40px 12px rgba(236,208,138,.3);';
   }else{
     body.style.cssText='width:34px;height:34px;top:9%;right:16%;background:radial-gradient(circle at 35% 30%,#fff3b0,#ffb020);box-shadow:0 0 30px 8px rgba(255,180,60,.6);';
   }
@@ -853,10 +1166,135 @@ function enterLanded(){
   landCapIdx=0;
   renderLandCap();
   document.getElementById('landed').onclick=(e)=>{
-    if(e.target.closest('#landBackBtn'))return;
+    if(e.target.closest('#landBackBtn')||e.target.closest('#landControls')
+       ||e.target.closest('#landCard'))return;
     nextLandCap();
   };
+  initRPG(d);
 }
+
+// ---------- 🎮 RPG 탐사 로직 ----------
+let walkX=0,walkDir=0,jumpY=0,jumpV=0,onGround=true,rpgItems=[],rpgDone=0,rpgSolid=false;
+const WORLD_W=2400;
+function initRPG(d){
+  rpgSolid=SOLID_IDS.includes(d.id);
+  walkX=0;walkDir=0;jumpY=0;jumpV=0;onGround=true;rpgDone=0;
+  const ctrl=document.getElementById('landControls');
+  const hud=document.getElementById('landHud');
+  const itemsEl=document.getElementById('landItems');
+  itemsEl.innerHTML='';rpgItems=[];
+  if(rpgSolid){
+    ctrl.style.display='flex';hud.style.display='';
+    const list=[...(SURFACE[d.id]||[])];
+    if(LIFE_CLUE[d.id])list.push(LIFE_CLUE[d.id]);
+    list.forEach((it,i)=>{
+      const el=document.createElement('div');
+      el.className='landItem';el.id='ritem'+i;
+      el.innerHTML=`<span class="ring"></span>${it.icon}`;
+      itemsEl.appendChild(el);
+      rpgItems.push({...it,el,got:false});
+    });
+    hud.textContent=`🎯 0 / ${rpgItems.length}`;
+    const g=GRAV[d.id]||1;
+    const times=(1/g).toFixed(1);
+    document.getElementById('landCapText').textContent=
+      `◀ ▶ 를 눌러 걸어다니고, 🦘로 점프해요! 여기선 지구보다 ${times}배 높이 뛸 수 있어요. 반짝이는 곳으로 가보세요!`;
+  }else{
+    ctrl.style.display='none';hud.style.display='none';
+    // 가스 행성: 땅이 없다는 사실을 참여형 질문으로
+    const hq=HOVER_Q[d.id];
+    if(hq)setTimeout(()=>openLandCard({icon:'☁️',t:'여기 서 있을 수 있을까?',q:hq.q,a:hq.a},-1),700);
+  }
+  layoutRPG();
+}
+function layoutRPG(){
+  const cx=innerWidth/2;
+  rpgItems.forEach((it,i)=>{
+    it.el.style.left=(cx+(it.x-walkX))+'px';
+  });
+  const lander=document.getElementById('landLander');
+  lander.style.left=(cx+(0-walkX)-40)+'px';
+  lander.style.right='auto';
+  const ground=document.getElementById('landGround');
+  ground.style.backgroundPositionX=(-walkX*0.55)+'px';
+  const ch=document.getElementById('landChar');
+  if(ch){
+    ch.style.transform=`translateY(${-jumpY}px) scaleX(${walkDir<0?-1:1})`;
+  }
+}
+function updateRPG(dt){
+  if(!rpgSolid)return;
+  const g=(GRAV[focus.data.id]||1);
+  if(walkDir!==0){
+    walkX=Math.max(0,Math.min(WORLD_W,walkX+walkDir*230*dt));
+  }
+  if(!onGround){
+    jumpV-=Math.max(g,0.10)*1750*dt;
+    jumpY+=jumpV*dt;
+    if(jumpY>300){jumpY=300;jumpV=Math.min(jumpV,0);}
+    if(jumpY<=0){jumpY=0;jumpV=0;onGround=true;}
+  }
+  // 아이템 도달 판정
+  rpgItems.forEach((it,i)=>{
+    if(it.got)return;
+    if(Math.abs(it.x-walkX)<58){
+      it.got=true;it.el.classList.add('done');
+      rpgDone++;
+      document.getElementById('landHud').textContent=`🎯 ${rpgDone} / ${rpgItems.length}`;
+      openLandCard(it,i);
+    }
+  });
+  layoutRPG();
+}
+// ---------- 🎤 멈추고 대답하기 카드 ----------
+let cardStage=0,cardData=null;
+function openLandCard(it,idx){
+  cardData=it;cardStage=0;
+  document.getElementById('landCardIcon').textContent=it.icon;
+  document.getElementById('landCardIcon').className='thinkPulse';
+  document.getElementById('landCardTitle').textContent=it.t;
+  document.getElementById('landCardBody').textContent='🤔 '+it.q;
+  document.getElementById('landCardBtn').textContent='🙋 대답했어요!';
+  document.getElementById('landCard').classList.add('on');
+  walkDir=0;
+}
+document.getElementById('landCardBtn').onclick=(e)=>{
+  e.stopPropagation();
+  if(cardStage===0){
+    cardStage=1;
+    document.getElementById('landCardIcon').className='';
+    document.getElementById('landCardIcon').textContent='🎉';
+    document.getElementById('landCardBody').textContent=cardData.a;
+    document.getElementById('landCardBtn').textContent='👍 좋아요!';
+  }else{
+    document.getElementById('landCard').classList.remove('on');
+    if(rpgSolid&&rpgDone>=rpgItems.length&&rpgItems.length){
+      deliverLetter(focus);
+      setTimeout(()=>showToast('🏅 '+focus.data.name+' 탐사 완료!'),400);
+    }else if(!rpgSolid){
+      deliverLetter(focus);
+    }
+  }
+};
+// 조작 버튼
+function bindHold(id,on,off){
+  const el=document.getElementById(id);
+  ['pointerdown','touchstart'].forEach(ev=>el.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();on();}));
+  ['pointerup','pointerleave','touchend','touchcancel'].forEach(ev=>el.addEventListener(ev,e=>{e.stopPropagation();off();}));
+}
+bindHold('btnLeft',()=>walkDir=-1,()=>{if(walkDir<0)walkDir=0;});
+bindHold('btnRight',()=>walkDir=1,()=>{if(walkDir>0)walkDir=0;});
+document.getElementById('btnJump').addEventListener('pointerdown',e=>{
+  e.preventDefault();e.stopPropagation();
+  if(onGround&&rpgSolid){onGround=false;jumpV=560;}
+});
+addEventListener('keydown',e=>{
+  if(mode!=='LANDED')return;
+  if(e.key==='ArrowLeft')walkDir=-1;
+  if(e.key==='ArrowRight')walkDir=1;
+  if(e.key===' '&&onGround&&rpgSolid){onGround=false;jumpV=560;}
+});
+addEventListener('keyup',e=>{if(mode==='LANDED'&&(e.key==='ArrowLeft'||e.key==='ArrowRight'))walkDir=0;});
 function renderLandCap(){
   const d=focus.data;
   const caps=[ (LIFE[d.id]?LIFE[d.id].txt:''), ...d.facts ].filter(Boolean);
@@ -865,6 +1303,8 @@ function renderLandCap(){
 }
 function nextLandCap(){ landCapIdx++; renderLandCap(); }
 function exitLanded(){
+  walkDir=0;
+  document.getElementById('landCard').classList.remove('on');
   document.getElementById('landed').classList.remove('on');
   mode='ARRIVED';
   document.getElementById('title').style.display='';
@@ -877,6 +1317,90 @@ function exitLanded(){
 document.getElementById('landBtn').onclick=enterLanded;
 document.getElementById('landBackBtn').onclick=exitLanded;
 addEventListener('resize',()=>{if(mode==='LANDED')landStarsDraw();});
+
+// ---------- 🃏 행성 기억력 카드게임 ----------
+let cgPairs=4,cgDeck=[],cgFirst=null,cgLock=false,cgMoves=0,cgMatched=0;
+function planetBallCss(d){
+  if(d.type==='sun')return 'radial-gradient(circle at 35% 30%,#fff3b0,#ffd23f 45%,#ff8c1a)';
+  if(d.type==='blackhole')return 'radial-gradient(circle at 50% 50%,#000 55%,#ff8a3d 68%,#7a3ff0 100%)';
+  const c='#'+d.color.toString(16).padStart(6,'0');
+  return `radial-gradient(circle at 35% 30%, rgba(255,255,255,.75), ${c} 58%)`;
+}
+function openCardGame(){
+  document.getElementById('cardGame').classList.add('on');
+  document.getElementById('cgSetup').style.display='flex';
+  document.getElementById('cgBoard').classList.remove('on');
+  document.getElementById('cgWin').classList.remove('on');
+  document.getElementById('cgStat').textContent='';
+  showBest();
+}
+function showBest(){
+  let best={};try{best=JSON.parse(localStorage.getItem('space_cg')||'{}');}catch(e){}
+  const b=best[cgPairs];
+  document.getElementById('cgBest').textContent=b?`🏅 최고 기록: ${b}번 만에 성공!`:'처음 도전하는 판이에요!';
+}
+document.querySelectorAll('.cgLevels button').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.cgLevels button').forEach(x=>x.classList.remove('sel'));
+    btn.classList.add('sel');cgPairs=+btn.dataset.p;showBest();
+  };
+});
+document.getElementById('gameBtn').onclick=openCardGame;
+document.getElementById('cgBack').onclick=()=>document.getElementById('cardGame').classList.remove('on');
+document.getElementById('cgAgain').onclick=openCardGame;
+document.getElementById('cgStart').onclick=startCardGame;
+function startCardGame(){
+  cgFirst=null;cgLock=false;cgMoves=0;cgMatched=0;
+  document.getElementById('cgSetup').style.display='none';
+  document.getElementById('cgWin').classList.remove('on');
+  const board=document.getElementById('cgBoard');
+  board.classList.add('on');board.innerHTML='';
+  board.style.gridTemplateColumns=`repeat(${cgPairs<=4?4:4},1fr)`;
+  // 배운 천체들로 카드 구성 (학습 복습 효과!)
+  const pool=bodies.map(b=>b.data).sort(()=>Math.random()-0.5).slice(0,cgPairs);
+  cgDeck=[...pool,...pool].sort(()=>Math.random()-0.5);
+  cgDeck.forEach(d=>{
+    const c=document.createElement('div');
+    c.className='cgCard';c.dataset.id=d.id;
+    c.innerHTML=`<div class="cgInner">
+      <div class="cgFace cgBack">✨</div>
+      <div class="cgFace cgFront">
+        <div class="cgBall" style="background:${planetBallCss(d)}"></div>
+        <div class="cgName">${d.name}</div>
+      </div></div>`;
+    c.onclick=()=>cgFlip(c);
+    board.appendChild(c);
+  });
+  document.getElementById('cgStat').textContent='뒤집기 0';
+}
+function cgFlip(card){
+  if(cgLock||card.classList.contains('flip')||card.classList.contains('done'))return;
+  card.classList.add('flip');
+  if(!cgFirst){cgFirst=card;return;}
+  cgLock=true;cgMoves++;
+  document.getElementById('cgStat').textContent='뒤집기 '+cgMoves;
+  const a=cgFirst,b=card;cgFirst=null;
+  if(a.dataset.id===b.dataset.id){
+    setTimeout(()=>{
+      a.classList.add('done');b.classList.add('done');
+      cgMatched++;cgLock=false;
+      if(cgMatched===cgPairs)setTimeout(cgWin,600);
+    },420);
+  }else{
+    setTimeout(()=>{a.classList.remove('flip');b.classList.remove('flip');cgLock=false;},1100);
+  }
+}
+function cgWin(){
+  let best={};try{best=JSON.parse(localStorage.getItem('space_cg')||'{}');}catch(e){}
+  const prev=best[cgPairs];
+  const isNew=!prev||cgMoves<prev;
+  if(isNew){best[cgPairs]=cgMoves;try{localStorage.setItem('space_cg',JSON.stringify(best));}catch(e){}}
+  document.getElementById('cgWinIcon').textContent=isNew?'🏆':'🎉';
+  document.getElementById('cgWinText').textContent=isNew?'신기록 달성!':'모두 찾았어요!';
+  document.getElementById('cgWinSub').innerHTML=
+    `${cgMoves}번 만에 성공했어요!<br>${isNew?'✨ 지금까지 중 최고 기록이에요!':`🏅 최고 기록은 ${prev}번이에요`}`;
+  document.getElementById('cgWin').classList.add('on');
+}
 
 // ---------- 🛰️ 실제 관측 사진 텍스처 (textures 폴더가 있으면 자동 적용) ----------
 (function(){
@@ -1134,7 +1658,7 @@ function arrive(){
     row+=`<span class="pos-ball ${i===myIdx&&!isSpecial?'now':''}" style="background:#${bd.color.toString(16).padStart(6,'0')}">${isMoon&&i===myIdx?'🌙':''}</span>`;
   }
   const posText = isSpecial
-    ? '🕳️ 블랙홀은 행성이 아니라, 태양계를 잠깐 스쳐 지나가는 신비한 손님이에요!'
+    ? '🕳️ 블랙홀은 행성이 아니에요! 진짜 블랙홀은 아주 먼 우주에 있고, 여기선 배우려고 상상으로 불러왔어요.'
     : isMoon
     ? '달은 3번째 행성 <b style="color:#7ef0c8">지구</b> 곁을 도는 위성이에요!'
     : myIdx===0
@@ -1157,7 +1681,9 @@ function arrive(){
   $('card').classList.add('on');
   const idx=bodies.indexOf(focus);
   $('nextBtn').style.display=idx<bodies.length-1?'':'none';
-  document.getElementById('landBtn').style.display=(d.kind==='special')?'none':'';
+  document.getElementById('landBtn').style.display='';
+  document.getElementById('landBtn').textContent=
+    SOLID_IDS.includes(d.id)?'🚀 착륙해서 살펴보기':'☁️ 가까이 가서 살펴보기';
 }
 
 function showFact(){
@@ -1371,9 +1897,13 @@ function loop(){
   if(++frameNo%30===0){
     resize(); // 크기가 바뀐 경우에만 내부에서 1회 조정됨 (안전)
     const d=document.getElementById('dbg');
-    if(d)d.textContent=`v19 · ${W}×${H} · ${mode} · ${Math.round(RC.width)}×${Math.round(RC.height)}`;
+    if(d)d.textContent=`v21 · ${W}×${H} · ${mode} · ${Math.round(RC.width)}×${Math.round(RC.height)}`;
     const st=document.getElementById('stamps');
     if(st)st.style.display=(mode==='FLY'||mode==='MAP')?'':'none';
+    const qb=document.getElementById('questBtn');
+    if(qb)qb.style.display=(mode==='FLY'||mode==='MAP'||mode==='ARRIVED')?'':'none';
+    const gb=document.getElementById('gameBtn');
+    if(gb)gb.style.display=(mode==='FLY'||mode==='MAP')?'':'none';
   }
   const dt=Math.min(clock.getDelta(),0.05);
   arriveCooldown=Math.max(0,arriveCooldown-dt);
@@ -1405,6 +1935,11 @@ function loop(){
   if(f)f.scale.set(1,(0.8+Math.random()*0.6)*flameBoost,1);
   if(f2)f2.scale.set(1,(0.8+Math.random()*0.7)*flameBoost,1);
 
+  if(mode==='LANDED'){
+    updateRPG(dt);
+    if(loadingEl.style.display!=='none')loadingEl.style.display='none';
+    return;                       // 3D 렌더 생략 (배터리 절약)
+  }
   if(mode==='FLY'){
     bank=THREE.MathUtils.lerp(bank,0,dt*2);
     const dir=calcFwd();
