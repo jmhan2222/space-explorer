@@ -128,12 +128,12 @@
   #landHaze{position:absolute;left:0;right:0;bottom:36%;height:14%;z-index:4;pointer-events:none;
     background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.10) 55%,rgba(255,255,255,0) 100%);}
   /* 우주인 그림자 */
-  #landShadow{position:absolute;bottom:14%;left:50%;transform:translateX(-50%);z-index:7;
+  #landShadow{position:absolute;bottom:28%;left:50%;transform:translateX(-50%);z-index:7;
     width:clamp(70px,18vw,130px);height:clamp(16px,4vw,26px);border-radius:50%;
     background:radial-gradient(ellipse,rgba(0,0,0,.62),rgba(0,0,0,0) 70%);
     transition:opacity .15s,transform .15s;}
   /* 발자국 */
-  .footPrint{position:absolute;bottom:14.5%;z-index:6;font-size:clamp(13px,3vw,20px);
+  .footPrint{position:absolute;bottom:28.5%;z-index:6;font-size:clamp(13px,3vw,20px);
     opacity:.42;transform:translateX(-50%) rotate(-12deg);pointer-events:none;filter:grayscale(.4);}
   #landSkyBody{position:absolute;border-radius:50%;box-shadow:0 0 40px 10px rgba(255,255,255,.25);}
   #landBackBtn{position:fixed;top:14px;left:14px;z-index:30;pointer-events:auto;
@@ -142,19 +142,25 @@
     display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
   #landTitle{position:fixed;top:16px;left:66px;z-index:30;color:#ffe08a;
     font-size:clamp(16px,4vw,26px);text-shadow:0 0 14px rgba(0,0,0,.8);pointer-events:none;}
-  #landLander{position:absolute;left:14%;bottom:14%;font-size:clamp(46px,11vw,86px);
+  #landLander{position:absolute;left:14%;bottom:28%;font-size:clamp(46px,11vw,86px);
     filter:drop-shadow(0 10px 14px rgba(0,0,0,.6));z-index:6;}
-  #landCharWrap{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);z-index:8;text-align:center;}
-  #landChar{font-size:clamp(62px,16vw,118px);display:inline-block;
-    filter:drop-shadow(0 14px 12px rgba(0,0,0,.6)) drop-shadow(-6px -3px 5px rgba(160,190,255,.28));}
+  #landCharWrap{position:absolute;left:50%;bottom:30%;transform:translateX(-50%);z-index:8;text-align:center;}
+  #landChar{display:inline-block;width:clamp(58px,15vw,104px);
+    filter:drop-shadow(0 14px 12px rgba(0,0,0,.6)) drop-shadow(-5px -3px 6px rgba(160,190,255,.3));}
+  #landChar svg{width:100%;height:auto;display:block;}
+  #landChar.emojiMode{font-size:clamp(62px,16vw,118px);width:auto;}
   .walkBob{animation:aWalkBob .45s ease-in-out infinite;}
-  @keyframes aWalkBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+  @keyframes aWalkBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+  .walkBob svg #legL,.walkBob svg #armR{animation:aLimbA .45s ease-in-out infinite;transform-origin:50% 25%;}
+  .walkBob svg #legR,.walkBob svg #armL{animation:aLimbB .45s ease-in-out infinite;transform-origin:50% 25%;}
+  @keyframes aLimbA{0%,100%{transform:rotate(-13deg)}50%{transform:rotate(13deg)}}
+  @keyframes aLimbB{0%,100%{transform:rotate(13deg)}50%{transform:rotate(-13deg)}}
   #landCharFlip{display:inline-block;transition:transform .15s;}
   .a-idle{animation:aIdle 2.2s ease-in-out infinite;}
   @keyframes aIdle{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
   .landFx{position:absolute;font-size:clamp(28px,7vw,50px);pointer-events:none;z-index:9;}
-  #landCaption{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:30;
-    width:min(680px,92vw);background:rgba(10,8,26,.78);border:2px solid rgba(255,224,138,.35);
+  #landCaption{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:30;
+    width:min(560px,74vw);background:rgba(10,8,26,.78);border:2px solid rgba(255,224,138,.35);
     border-radius:20px;padding:12px 18px;text-align:center;backdrop-filter:blur(6px);pointer-events:auto;}
   #landCapText{font-size:clamp(14px,3.6vw,21px);line-height:1.5;color:#fff8ec;min-height:2.6em;}
   #landDots{display:flex;gap:6px;justify-content:center;margin-top:8px;}
@@ -164,7 +170,7 @@
 
   /* 🎮 착륙 RPG */
   #landItems{position:absolute;inset:0;z-index:7;pointer-events:none;}
-  .landItem{position:absolute;bottom:20%;font-size:clamp(34px,8vw,58px);
+  .landItem{position:absolute;bottom:33%;font-size:clamp(34px,8vw,58px);
     transform:translateX(-50%);filter:drop-shadow(0 6px 8px rgba(0,0,0,.6));transition:opacity .3s;}
   .landItem .ring{position:absolute;left:50%;top:50%;width:150%;height:150%;
     transform:translate(-50%,-50%);border-radius:50%;border:3px dashed rgba(255,224,138,.75);
@@ -176,14 +182,16 @@
   #landHud{position:fixed;top:16px;right:14px;z-index:30;
     background:rgba(10,8,26,.75);border:2px solid rgba(255,224,138,.4);border-radius:999px;
     padding:7px 16px;font-size:clamp(13px,3.2vw,19px);color:#ffe08a;pointer-events:none;}
-  #landControls{position:fixed;bottom:112px;left:0;right:0;z-index:31;
-    display:flex;justify-content:space-between;align-items:center;padding:0 16px;pointer-events:none;}
+  #landControls{position:fixed;bottom:14px;left:0;right:0;z-index:31;
+    display:flex;justify-content:space-between;align-items:flex-end;padding:0 12px;pointer-events:none;}
+  #landControls .grpL{display:flex;gap:10px;pointer-events:none;}
   .padBtn{pointer-events:auto;border:3px solid rgba(255,255,255,.35);
     background:rgba(30,24,60,.6);color:#fff;font-family:inherit;cursor:pointer;
     width:clamp(64px,15vw,92px);height:clamp(64px,15vw,92px);border-radius:50%;
     font-size:clamp(24px,6vw,38px);display:flex;align-items:center;justify-content:center;
     backdrop-filter:blur(4px);user-select:none;}
-  .padBtn:active{transform:scale(.9);background:rgba(80,60,160,.75);}
+  .padBtn:active{transform:scale(.9);background:rgba(80,60,160,.85);}
+  .padBtn{opacity:.82;}
   #btnJump{background:radial-gradient(circle at 35% 30%,#8ef0c8,#3aa878);border-color:rgba(140,255,210,.6);}
   #landCard{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);
     z-index:35;width:min(500px,92vw);background:rgba(16,12,42,.96);
@@ -346,8 +354,8 @@
 </div>
 <canvas id="c"></canvas>
 <canvas id="speed"></canvas>
-<div class="ui" id="title">🚀 3D 우주 탐험대 <span style="font-size:.6em;opacity:.6">v23</span></div>
-<div style="position:fixed;left:8px;bottom:2px;z-index:30;font-size:10px;opacity:.45;color:#aab;pointer-events:none;font-family:monospace" id="dbg">v23 준비중</div>
+<div class="ui" id="title">🚀 3D 우주 탐험대 <span style="font-size:.6em;opacity:.6">v24</span></div>
+<div style="position:fixed;left:8px;bottom:2px;z-index:30;font-size:10px;opacity:.45;color:#aab;pointer-events:none;font-family:monospace" id="dbg">v24 준비중</div>
 <div class="ui" id="hint">화면을 문질러 조종하고,<br>가고 싶은 별을 콕 눌러요!</div>
 <button class="ui pill" id="mapBtn">🗺️ 태양계 지도</button>
 <button class="ui pill" id="qualBtn" style="top:calc(14px + clamp(42px,11vw,58px));right:12px;">✨ 선명하게</button>
@@ -436,9 +444,11 @@
   <div id="landCharWrap"><span id="landChar">🧑‍🚀</span></div>
   <div id="landHud">🎯 0 / 3</div>
   <div id="landControls">
-    <button class="padBtn" id="btnLeft">◀</button>
+    <div class="grpL">
+      <button class="padBtn" id="btnLeft">◀</button>
+      <button class="padBtn" id="btnRight">▶</button>
+    </div>
     <button class="padBtn" id="btnJump">🦘</button>
-    <button class="padBtn" id="btnRight">▶</button>
   </div>
   <div id="landCard">
     <div id="landCardIcon">🪨</div>
@@ -1173,9 +1183,12 @@ function enterLanded(){
     +'radial-gradient(140% 90% at 88% 100%, #000 58%, transparent 59%)';
   hills.style.webkitMaskImage=hillMask;hills.style.maskImage=hillMask;
   const test=new Image();
+  test.onload=()=>{ document.getElementById('landTitle').textContent=`🚀 ${d.name} 표면에 착륙!`; };
   test.onerror=()=>{
     ground.style.backgroundImage='linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.45))';
     hills.style.backgroundImage='linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.5))';
+    document.getElementById('landTitle').innerHTML=
+      `🚀 ${d.name} 표면에 착륙! <span style="font-size:.5em;opacity:.7">(사진 없음: textures 폴더 확인)</span>`;
   };
   test.src='textures/2k/'+d.id+'.jpg';
   // 하늘의 천체: 지구=달, 달=지구, 그 외엔 작은 태양
@@ -1201,11 +1214,11 @@ function enterLanded(){
   // 걸어다니는 곳: 조작을 방해하지 않도록 잔잔한 동작만
   // 땅이 없는 곳: 그 환경의 반응 연출을 그대로 보여줘요
   const animCls=canWalk?'a-idle':(cfg?cfg.anim:'');
-  const emoji=(canWalk?'🧑‍🚀':(cfg?cfg.e:'🧑‍🚀'));
+  const emoji=(canWalk?ASTRONAUT_SVG:`<span style="font-size:1em">${cfg?cfg.e:'🧑‍🚀'}</span>`);
   const fxHtml=(!canWalk&&cfg)
     ?cfg.fx.map(f=>`<span class="landFx ${f[2].replace('fx-ice','fx-ice2')}" style="${f[1]}">${f[0]}</span>`).join(''):'';
   wrap.style.transform='translateX(-50%)';
-  wrap.innerHTML=`<span id="landCharFlip"><span id="landChar" class="${animCls}">${emoji}</span></span>`+fxHtml;
+  wrap.innerHTML=`<span id="landCharFlip"><span id="landChar" class="${animCls}${canWalk?'':' emojiMode'}">${emoji}</span></span>`+fxHtml;
   landStarsDraw();
   landCapIdx=0;
   renderLandCap();
@@ -1216,6 +1229,45 @@ function enterLanded(){
   };
   initRPG(d);
 }
+
+// ---------- 👨‍🚀 우주인 캐릭터 (SVG) ----------
+const ASTRONAUT_SVG=`<svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="suit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eceff4"/>
+      <stop offset="100%" stop-color="#c3c9d4"/>
+    </linearGradient>
+    <radialGradient id="visor" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#ffd98a"/><stop offset="45%" stop-color="#c8890f"/>
+      <stop offset="100%" stop-color="#5a3a05"/>
+    </radialGradient>
+    <linearGradient id="pack" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9cfd8"/><stop offset="100%" stop-color="#9aa3b0"/>
+    </linearGradient>
+  </defs>
+  <!-- 생명유지장치 배낭 -->
+  <rect x="26" y="42" width="48" height="46" rx="10" fill="url(#pack)"/>
+  <!-- 헬멧 -->
+  <circle cx="50" cy="30" r="24" fill="url(#suit)"/>
+  <circle cx="50" cy="30" r="18" fill="url(#visor)"/>
+  <ellipse cx="42" cy="23" rx="7" ry="5" fill="#fff" opacity=".55"/>
+  <!-- 몸통 -->
+  <rect x="30" y="48" width="40" height="46" rx="14" fill="url(#suit)"/>
+  <rect x="38" y="62" width="24" height="13" rx="4" fill="#b9c0cb"/>
+  <circle cx="44" cy="68" r="2.4" fill="#ff6b6b"/><circle cx="52" cy="68" r="2.4" fill="#5ac8fa"/>
+  <!-- 팔 -->
+  <g id="armL"><rect x="14" y="52" width="16" height="38" rx="8" fill="url(#suit)"/>
+    <circle cx="22" cy="92" r="8" fill="#e2e6ec"/></g>
+  <g id="armR"><rect x="70" y="52" width="16" height="38" rx="8" fill="url(#suit)"/>
+    <circle cx="78" cy="92" r="8" fill="#e2e6ec"/></g>
+  <!-- 다리 -->
+  <g id="legL"><rect x="33" y="90" width="16" height="40" rx="7" fill="url(#suit)"/>
+    <rect x="29" y="126" width="21" height="12" rx="4" fill="#aeb6c2"/></g>
+  <g id="legR"><rect x="51" y="90" width="16" height="40" rx="7" fill="url(#suit)"/>
+    <rect x="50" y="126" width="21" height="12" rx="4" fill="#aeb6c2"/></g>
+  <!-- 성조기 대신 미션 패치 -->
+  <circle cx="50" cy="84" r="4.5" fill="#ffd644" opacity=".9"/>
+</svg>`;
 
 // ---------- 🎮 RPG 탐사 로직 ----------
 let walkX=0,walkDir=0,jumpY=0,jumpV=0,onGround=true,rpgItems=[],rpgDone=0,rpgSolid=false;
@@ -1387,10 +1439,20 @@ addEventListener('keyup',e=>{if(mode==='LANDED'&&(e.key==='ArrowLeft'||e.key==='
 function renderLandCap(){
   const d=focus.data;
   const caps=[ (LIFE[d.id]?LIFE[d.id].txt:''), ...d.facts ].filter(Boolean);
-  document.getElementById('landCapText').textContent=caps[landCapIdx%caps.length];
-  document.getElementById('landDots').innerHTML=caps.map((_,i)=>`<span class="ldot ${i===landCapIdx%caps.length?'now':''}"></span>`).join('');
+  const last=landCapIdx>=caps.length-1;
+  document.getElementById('landCapText').textContent=caps[Math.min(landCapIdx,caps.length-1)];
+  document.getElementById('landDots').innerHTML=caps.map((_,i)=>`<span class="ldot ${i===Math.min(landCapIdx,caps.length-1)?'now':''}"></span>`).join('');
+  const hint=document.getElementById('landNextHint');
+  if(hint)hint.textContent=last
+    ? (rpgSolid?'✅ 이야기 끝! 이제 걸어서 탐사해 보세요 →':'✅ 이야기 끝! ⬅ 버튼으로 우주선에 돌아가요')
+    : '화면을 톡 누르면 다음 이야기예요 →';
 }
-function nextLandCap(){ landCapIdx++; renderLandCap(); }
+function nextLandCap(){
+  const d=focus.data;
+  const caps=[ (LIFE[d.id]?LIFE[d.id].txt:''), ...d.facts ].filter(Boolean);
+  if(landCapIdx>=caps.length-1)return;   // 끝나면 더 넘어가지 않아요
+  landCapIdx++; renderLandCap();
+}
 function exitLanded(){
   walkDir=0;
   document.getElementById('landCard').classList.remove('on');
@@ -2009,7 +2071,7 @@ function loop(){
   if(++frameNo%30===0){
     resize(); // 크기가 바뀐 경우에만 내부에서 1회 조정됨 (안전)
     const d=document.getElementById('dbg');
-    if(d)d.textContent=`v23 · ${W}×${H} · ${mode} · ${Math.round(RC.width)}×${Math.round(RC.height)}`;
+    if(d)d.textContent=`v24 · ${W}×${H} · ${mode} · ${Math.round(RC.width)}×${Math.round(RC.height)}`;
     const st=document.getElementById('stamps');
     if(st)st.style.display=(mode==='FLY'||mode==='MAP')?'':'none';
     const qb=document.getElementById('questBtn');
